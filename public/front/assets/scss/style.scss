@@ -1,0 +1,63 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Chakta - AutoParts & Accessories Shop HTML Template
+    Template URI: site.com
+    Description: Chakta - AutoParts & Accessories Shop HTML Template
+    Author: Md. Mizanur Rahman
+    Author URI: site.com
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+
+    CSS INDEX
+    ===================
+
+    01. Theme default css
+	02. Header css
+    03. Hero css
+    04. About css
+    05. Features css
+    06. Gallery css
+    07. Testimonial css
+    08. Shop css
+    09. Blog css
+    10. Contact css
+    11. Footer css
+
+-----------------------------------------------------------------------------------*/
+
+@import 'variables';
+@import 'mixin';
+
+//--====== Default css ======--//
+@import 'common';
+
+//--====== Header css ======--//
+@import 'header';
+
+//--====== Hero css ======--//
+@import 'hero';
+
+//--====== About css ======--//
+@import 'about';
+
+//--====== Features css ======--//
+@import 'features';
+
+//--====== gallery css ======--//
+@import 'gallery';
+
+//--====== Testimonial css ======--//
+@import 'testimonial';
+
+//--====== Shop css ======--//
+@import 'shop';
+
+//--====== Blog css ======--//
+@import 'blog';
+
+//--====== Contact css ======--//
+@import 'contact';
+
+//--====== Footer css ======--//
+@import 'footer';

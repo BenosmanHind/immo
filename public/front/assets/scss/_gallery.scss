@@ -1,0 +1,96 @@
+
+/*---=======================
+   06. Gallery css 
+===========================---*/
+.gallery-section{
+	& .filter-nav{
+		& ul.filter-btn{
+			border-bottom: 1px solid #eaeaea;
+			@media #{$xs}{
+				display: none;
+			}
+			& li{
+				position: relative;
+				display: inline-block;
+				font-size: 15px;
+				font-weight: 500;
+				text-transform: uppercase;
+				color: $heading-color;
+				padding: 0px 15px 27px;
+				cursor: pointer;
+				@include transition(.3s);
+				&.active{
+					color: $theme-color;
+					&:after{
+						position: absolute;
+						bottom: -2px;
+						left: 0;
+						display: block;
+						content: '';
+						width: 100%;
+						height: 3px;
+						background: $theme-color;
+						@include transition(.3s);
+						@media #{$xs}{
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .gallery-item{
+		&:hover{
+			& .gallery-img{
+				& img{
+					@include transform(scale(1.2));
+				}
+				& .gallery-overlay{
+					opacity: 1;
+					visibility: visible;
+					& .gallery-content{
+						@include transform(translateY(0px));
+					}
+				}
+			}
+		}
+		& .gallery-img{
+			position: relative;
+			overflow: hidden;
+			& img{
+				width: 100%;
+				@include transform(scale(1));
+				@include transition(.7s);
+			}
+			& .gallery-overlay{
+				background: rgba(17, 17, 17, 0.85);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 20px;
+				display: flex;
+				align-items: flex-end;
+				justify-content: flex-end;
+				opacity: 0;
+				visibility: hidden;
+				@include transition(.3s);
+				& .gallery-content{
+					background: $white;
+					padding: 20px;
+					text-align: center;
+					min-width: 210px;
+					@include transform(translateY(-20px));
+					@include transition(.5s);
+					& h5{
+						margin-bottom: 2px;
+					}
+					& span{
+						color: $theme-color;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,92 @@
+
+/*---=======================
+   10. Contact css 
+===========================---*/
+
+.contact-area{
+	& .contact-info-list{
+		padding: 80px 0 50px;
+		& .list-item{
+			position: relative;
+			padding-left: 80px;
+			& i{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 55px;
+				height: 55px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 7px;
+				color: $white;
+				font-size: 25px;
+				background: $theme-color;
+			}
+			& h5{
+				margin-bottom: 11px;
+			}
+			& p{
+				font-size: 18px;
+			}
+		}
+	}
+	& .form-wrapper{
+		background: #f5f7fa;
+		padding: 80px 40px;
+	}
+}
+form.contact-form{
+	& .form_control{
+		height: 70px;
+		border: none;
+		margin-bottom: 30px;
+	}
+	& textarea.form_control{
+		padding-top: 15px;
+		height: 140px;
+	}
+}
+.contact-area-v2{
+	& form.contact-form{
+		& .form_group{
+			& .nice-select{
+				border-radius: 0px;
+				height: 70px;
+				line-height: 70px;
+				color: $heading-color;
+				background: $white;
+				border: none;
+				font-weight: 500;
+				&:after{
+					color: $theme-color;
+				}
+			}
+		}
+	}
+}
+.contact-map-section{
+	& .map_box{
+		position: relative;
+		& iframe{
+			width: 100%;
+			height: 750px;
+			display: inherit;
+			border: none;
+		}
+		& img{
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			@include transform(translate(-50%,-40%));
+			@media #{$md}{
+				width: 50px;
+				height: 70px;
+			}
+			@media #{$xs}{
+				width: 50px;
+				height: 70px;
+			}
+		}
+	}
+}

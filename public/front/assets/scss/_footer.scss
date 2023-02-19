@@ -1,0 +1,147 @@
+
+/*---=======================
+   11. Footer css 
+===========================---*/
+
+.footer-area{
+	& .footer_widget{
+		& .widget{
+			@media #{$md}{
+				margin-bottom: 40px;
+			}
+			@media #{$xs}{
+				margin-bottom: 40px;
+			}
+			& h4.widget-title{
+				color: $white;
+				margin-bottom: 22px;
+			}
+			&.about-widget{
+				& img{
+					padding-bottom: 25px;
+				}
+				& p{
+					padding-bottom: 22px;
+					color: $white;
+				}
+				& .social-box{
+					& h5{
+						color: $white;
+						margin-bottom: 10px;
+					}
+					& ul.social-link{
+						& li{
+							margin-right: 15px;
+						}
+					}
+				}
+			}
+			&.quick-links-widget{
+				padding-left: 100px;
+				@media #{$lg}{
+					padding-left: 0px;
+				}
+				@media #{$md}{
+					padding-left: 0px;
+				}
+				@media #{$xs}{
+					padding-left: 0px;
+				}
+				& ul.link{
+					& li{
+						padding-bottom: 10px;
+						display: block;
+						& a{
+							color: $white;
+							&:hover,&:focus{
+								color: $theme-color;
+							}
+						}
+					}
+				}
+			}
+			&.contact-widget{
+				& ul.contact-info{
+					& li{
+						position: relative;
+						display: block;
+						padding-left: 25px;
+						margin-bottom: 10px;
+						& i{
+							position: absolute;
+							top: 7px;
+							left: 0;
+							color: $theme-color;
+						}
+						& p{
+							color: #c5cad8;
+						}
+						&.payment{
+							padding-left: 0px;
+							padding-top: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .copyright-area{
+		padding: 30px 0;
+		border-top: 1px solid #252525;
+		& .copyright-text{
+			& p{
+				color: $white;
+				& span{
+					color: $theme-color;
+				}
+			}
+		}
+	}
+}
+
+
+.footer-area-v2{
+	& .footer_widget{
+		& .widget{
+			& h4.widget-title{
+				color: $heading-color;
+			}
+			&.about-widget{
+				& p{
+					color: $text-color;
+				}
+				& .social-box{
+					& h5{
+						color: $heading-color;
+					}
+				}
+			}
+			&.quick-links-widget{
+				& ul.link{
+					& li{
+						& a{
+							color: $text-color;
+						}
+					}
+				}
+			}
+			&.contact-widget{
+				& ul.contact-info{
+					& li{
+						& p{
+							color: $text-color;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .copyright-area{
+		border-top: 1px solid #eaeaea;
+		& .copyright-text{
+			& p{
+				color: $text-color;
+			}
+		}
+	}
+}
