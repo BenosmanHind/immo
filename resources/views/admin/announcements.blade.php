@@ -47,7 +47,7 @@
                                     <td>Atik Romaissa</td>
                                     <td>Studio</td>
                                     <td>location </td>
-                                    <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                    <td><span class="badge badge-warning">En attente</span></td>
                                     <td>
                                         <form action="" method="post">
                                          <div class="d-flex">
@@ -64,7 +64,7 @@
                                     <td>Atik Romaissa</td>
                                     <td>Studio</td>
                                     <td>Vendre </td>
-                                    <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                    <td><span class="badge badge-warning">En attente</span></td>
                                     <td>
                                         <form action="" method="post">
                                          <div class="d-flex">
@@ -81,7 +81,7 @@
                                     <td>Atik Romaissa</td>
                                     <td>Studio</td>
                                     <td>Vendre</td>
-                                    <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                    <td><span class="badge badge-warning">En attente</span></td>
                                     <td>
                                         <form action="" method="post">
                                          <div class="d-flex">

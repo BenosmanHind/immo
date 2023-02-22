@@ -78,7 +78,7 @@
                             <div class="top-right">
                                 <form>
                                     <div class="form_group">
-                                        <input type="search" placeholder="Search" name="search">
+                                        <input type="search" placeholder="Rechercher" name="search">
                                         <i class="far fa-search"></i>
                                     </div>
                                 </form>

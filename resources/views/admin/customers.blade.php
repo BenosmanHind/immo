@@ -45,7 +45,7 @@
                                     <td>Atik Romaissa</td>
                                     <td>romaissa@gmail.com</td>
                                     <td>0712548795</td>
-                                    <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                    <td><span class="badge badge-warning">En attente</span></td>
                                     <td>
                                         <form action="" method="post">
                                          <div class="d-flex">

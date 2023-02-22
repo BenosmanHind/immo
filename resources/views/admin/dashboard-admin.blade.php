@@ -178,7 +178,7 @@
                                                         <td>Atik Romaissa</td>
                                                         <td>Studio</td>
                                                         <td>location </td>
-                                                        <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                                        <td><span class="badge badge-warning">En attente</span></td>
 
 													</tr>
 													<tr>
@@ -192,7 +192,7 @@
                                                         <td>Atik Romaissa</td>
                                                         <td>Studio</td>
                                                         <td>location </td>
-                                                        <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                                        <td><span class="badge badge-warning">En attente</span></td>
 
 													</tr>
 													<tr>
@@ -206,7 +206,7 @@
                                                         <td>Atik Romaissa</td>
                                                         <td>Studio</td>
                                                         <td>location </td>
-                                                        <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                                        <td><span class="badge badge-warning">En attente</span></td>
 
 													</tr>
 													<tr>
@@ -220,7 +220,7 @@
                                                         <td>Atik Romaissa</td>
                                                         <td>Studio</td>
                                                         <td>location </td>
-                                                        <td><span class="badge bg-warning text-dark">En attente</span></td>
+                                                        <td><span class="badge badge-warning">En attente</span></td>
 
 													</tr>
 												</tbody>
@@ -266,7 +266,7 @@
 								</div>
 							</div>
                             <div class="col-xl-3 col-xxl-4 col-lg-12 col-md-12">
-                                <div class="card bg-primary text-white">
+                                <div class="card">
                                     <div class="card-header pb-0 border-0">
                                         <h4 class="card-title text-white">TOP VENDEURS</h4>
                                     </div>
