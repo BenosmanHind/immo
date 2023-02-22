@@ -19,4 +19,21 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->back();
     }
+
+    public function edit($id){
+        $category = Category::find($id);
+        return view('admin.edit-category',compact('category'));
+    }
+    public function update(Request $request , $id){
+        $category = Category::find($id);
+        $category->designation = $request->designation;
+        $category->save();
+        return redirect('admin/categories');
+    }
+
+    public function destroy($id){
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back();
+    }
 }
