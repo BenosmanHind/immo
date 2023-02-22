@@ -2,7 +2,7 @@
 @section('content')
 
  <!--====== Start breadcrumbs-section ======-->
- <section class="breadcrumbs-section bg_cover" style="background-image: url(assets/images/bg/breadcrumbs-bg.jpg);">
+ <section class="breadcrumbs-section bg_cover" style="background-image: url(assets/images/bg/breadcrumbs-bg.jpg);background-color: #696969">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -25,7 +25,12 @@
                 <div class="form-wrapper">
                     <form class="contact-form" method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="row">
+                        <div class="mb-4 text-center">
+                            <p  > <span style="font-size: 22px; font-weight:500;color: #000"> Bienvenue,</span> <br>
+                            <span style="font-size: 15px; font-weight:300;color: #000"> Merci de remplir tous les champs</span></p>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+
                             <div class="col-lg-6">
                                 <div class="form_group">
                                     <input type="text" class="form_control @error('fisrt_name') is-invalid @enderror" placeholder="nom" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" >
@@ -87,7 +92,7 @@
                                     <i class="fal fa-lock"></i>
                                 </div>
                             </div>
-                            <div class="col-lg-6 mt-2">
+                            <div class="col-lg-6 mt-2 text-center">
                                 <div class="form_group">
                                     <button type ="submit" class="main-btn">S'inscrir</button>
                                 </div>

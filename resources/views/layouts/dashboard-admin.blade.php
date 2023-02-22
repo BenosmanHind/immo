@@ -44,10 +44,10 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('dashboard/images/logo-white.png') }}" alt="">
-                <img class="logo-compact" src="{{ asset('dashboard/images/logo-text-white.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('dashboard/images/logo-text-white.png') }}" alt="">
+            <a href="{{ asset('/admin') }}" class="brand-logo">
+                <img class="logo-abbr" src="{{ asset('dashboard/images/logo-icon.png') }}" alt="">
+
+                <h3>Immo+</h3>
             </a>
 
             <div class="nav-control">
@@ -787,6 +787,30 @@
 
 	})(jQuery);
 	</script>
+    <script>
+    (function($) {
+        "use strict"
+
+        var direction =  getUrlParams('dir');
+        if(direction != 'rtl')
+        {direction = 'ltr'; }
+
+        new dezSettings({
+            typography: "roboto",
+            version: "dark",
+            layout: "vertical",
+            headerBg: "color_1",
+            navheaderBg: "color_3",
+            sidebarBg: "color_1",
+            sidebarStyle: "full",
+            sidebarPosition: "fixed",
+            headerPosition: "fixed",
+            containerLayout: "wide",
+            direction: direction
+        });
+
+    })(jQuery);
+    </script>
 
 </body>
 </html>
