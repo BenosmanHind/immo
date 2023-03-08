@@ -36,7 +36,7 @@ class AnnouncementController extends Controller
     public function store(Request $request){
         $announcement = new Property();
         $announcement->designation = $request->designation;
-        $announcement->user_id = 1;
+        $announcement->user_id = Auth::user()->id;
         $announcement->category_id = $request->category;
         $announcement->type = $request->type;
         $announcement->description = $request->description;
