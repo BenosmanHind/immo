@@ -29,16 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected function redirectTo()
-   {
-       if (auth::user()->type == 'admin') {
-           return '/admin';
-       }
-       else if(auth::user()->type == 'customer'){
-          return '/app';
-       }
-
-   }
+    protected $redirectTo = '/alert';
 
     /**
      * Create a new controller instance.
@@ -95,6 +86,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'email' => $data['email'],
             'type' =>'customer',
+            'status' =>0,
             'password' => Hash::make($data['password']),
         ]);
     }

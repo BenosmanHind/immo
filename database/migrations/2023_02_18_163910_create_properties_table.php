@@ -18,7 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->unsignedBigInteger('category_id')->unsigned();
             $table->string('designation');
+            $table->string('wilaya')->nullable();
+            $table->string('daira')->nullable();
             $table->longText('description');
+            $table->longText('short_description')->nullable();
             $table->string('superficie');
             $table->integer('piece')->nullable();
             $table->float('price')->nullable();
@@ -26,6 +29,7 @@ return new class extends Migration
             $table->string('quartie')->nullable();
             $table->string('lien_map')->nullable();
             $table->integer('status')->nullable();
+            $table->integer('type')->nullable();
             $table->string('slug')->nullable();
             $table->tinyInteger('flag')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

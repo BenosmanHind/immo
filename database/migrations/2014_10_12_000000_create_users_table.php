@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('type')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="{{ asset('dashboard/vendor/chartist/css/chartist.min.css') }}">
     <link href="{{ asset('dashboard/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('dashboard/vendor/toastr/css/toastr.min.css')}}">
 	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 
 
@@ -762,7 +763,10 @@
     <!-- Datatable -->
 	<script src="{{asset('dashboard/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{asset('dashboard/js/plugins-init/datatables.init.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/toastr/js/toastr.min.js')}}"></script>
 
+    <!-- All init script -->
+    <script src="{{asset('dashboard/js/plugins-init/toastr-init.js')}}"></script>
 	<script>
 	(function($) {
 		"use strict"
@@ -811,6 +815,9 @@
 
     })(jQuery);
     </script>
-
+@stack('modal-edit-status-scripts')
+@stack('modal-update-status-scripts')
+@stack('modal-edit-status-announcement-scripts')
+@stack('modal-update-status-announcement-scripts')
 </body>
 </html>

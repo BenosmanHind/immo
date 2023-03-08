@@ -6,106 +6,52 @@
             <div class="col-lg-12">
                 <div class="filter-nav text-center mb-50">
                     <ul class="filter-btn">
-                        <li data-filter="*" class="active">Mes annonces</li>
-                        <li data-filter=".cat1">Bearing</li>
-                        <li data-filter=".cat2">Wheel</li>
-                        <li data-filter=".cat3">Cars</li>
-                        <li data-filter=".cat4">Messagerie</li>
+                        <li  class="active"><a href="{{ asset('/app') }}" >Mes annonces</a></li>
+                        <li data-filter=".cat1">Mes messages</li>
+                        <li data-filter=".cat2">Mes favoris</li>
+                        <li data-filter=".cat2">Mon profil</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row d-flex justify-content-center">
+            <a href="{{ asset('/app/announcement/create') }}" type="button" class="main-btn">Ajouter une annonce</a>
+    </div>
+
 </section>
  <!--====== Start Shop-List section ======-->
- <section class="shop-list-section shop-list-sidebar shop-grid-sidebar pt-80 pb-80 light-bg">
+ <section class="shop-list-section shop-list-sidebar shop-grid-sidebar  pb-80 light-bg pt-10">
     <div class="container">
-        <div class="row">
+        <div class="text-center">
+        <p>Vous avez <b>({{ $count_announcement }})</b> annonce(s) !</p>
+        </div>
+        <div class="row mt-4">
             <div class="col-lg-12">
-               <div class="row">
-                    <div class="col-lg-9">
-                        <div class="shop-item mb-15" style="height: 7%">
-                            <div class="shop-img">
-                                <span class="span new">new</span>
-                                <img src="{{ asset('front/assets/images/shop/products-14.jpg') }}" alt="">
-                                <div class="shop-overlay">
-                                    <div class="overlay-content">
-                                        <ul>
-                                            <li><a href="#" class="icon"><i class="far fa-cart-plus"></i></a></li>
-                                            <li><a href="assets/images/shop/products-14.jpg" class="icon img-popup"><i class="far fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="shop-content">
-                                <ul class="rating">
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                </ul>
-                                <h3 class="title"><a href="shop-details.html">DOE Replica Wheels</a></h3>
-                                <p class="price">$95.99</p>
+               <table class="table">
+                    <tbody>
+                        @foreach($announcements as $announcement)
+                        <tr style="background-color:#ffff">
+                            <th scope="row"> <img style="with:100px;height:100px" src="{{ asset('storage/images/properties/'.$announcement->images[0]->link) }}" class="img-fluid img-thumbnail" alt="Sheep"></th>
+                            <td style="vertical-align: middle;">{{ $announcement->designation }}</td>
+                            <td style="vertical-align: middle;">@if($announcement->status == 0) En attente @elseif($announcement->status == 1) Validé @else Annuler @endif</td>
+                            <td style="vertical-align: middle;">
+                                <a href="{{ asset('announcement/'.$announcement->slug) }}" class=" btn-xs sharp mr-1 "><i class="fa fa-eye"></i></a>
+                                <a href="#" class=" btn-xs sharp mr-1 "><i class="fa fa-pencil"></i></a>
+                                <button onclick="return confirm('Vous voulez vraiment supprimer?')" style="background-color: #ffff;"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
 
-                            </div>
-                        </div>
-                        <div class="shop-item mb-15" style="height: 7%">
-                            <div class="shop-img">
-                                <span class="span new">new</span>
-                                <img src="{{ asset('front/assets/images/shop/products-15.jpg') }}" alt="">
-                                <div class="shop-overlay">
-                                    <div class="overlay-content">
-                                        <ul>
-                                            <li><a href="#" class="icon"><i class="far fa-cart-plus"></i></a></li>
-                                            <li><a href="assets/images/shop/products-15.jpg" class="icon img-popup"><i class="far fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="shop-content">
-                                <ul class="rating">
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                </ul>
-                                <h3 class="title"><a href="shop-details.html">A/C & Heater Control</a></h3>
-                                <p class="price">$95.99</p>
-
-                            </div>
-                        </div>
-                        <div class="shop-item mb-15" style="height:7%" >
-                            <div class="shop-img">
-                                <span class="span new">new</span>
-                                <img src="{{ asset('front/assets/images/shop/products-16.jpg') }}" alt="">
-                                <div class="shop-overlay">
-                                    <div class="overlay-content">
-                                        <ul>
-                                            <li><a href="#" class="icon"><i class="far fa-cart-plus"></i></a></li>
-                                            <li><a href="{{ asset('front/') }}assets/images/shop/products-16.jpg" class="icon img-popup"><i class="far fa-search-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="shop-content">
-                                <ul class="rating">
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                </ul>
-                                <h3 class="title"><a href="shop-details.html">DOE Replica Wheels</a></h3>
-                                <p class="price">$95.99</p>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                        <tr style="padding:3px;">
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                       @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -20,16 +20,15 @@
         <link rel="stylesheet" href="{{ asset('front/assets/css/magnific-popup.css') }}">
         <!--====== Slick css ======-->
         <link rel="stylesheet" href="{{ asset('front/assets/css/slick.css') }}">
-        <!--====== nice-select css ======-->
-        <link rel="stylesheet" href="{{ asset('front/assets/css/nice-select.css') }}">
-        <!-- jquery.nice-number css-->
-        <link rel="stylesheet" href="{{ asset('front/assets/css/jquery.nice-number.css') }}">
-        <!-- jquery-ui css-->
+              <!-- jquery-ui css-->
         <link rel="stylesheet" href="{{ asset('front/assets/css/jquery-ui.min.css') }}">
         <!--====== Default css ======-->
         <link rel="stylesheet" href="{{ asset('front/assets/css/default.css') }}">
         <!--====== Style css ======-->
         <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{asset('front/assets/uploader/drop_uploader.css')}}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
     </head>
 
     <style>
@@ -119,11 +118,30 @@
                         <!-- nav push item -->
                         <div class="nav-push-item">
                             <div class="nav-tools">
+                                <div class="dropdown show">
                                 <ul>
-                                    <li><a href="#"><i class="fal fa-user-circle"></i></a></li>
+                                    <li><a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"  aria-expanded="false"><i class="fal fa-user-circle "></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        @auth
+                                        <a class="dropdown-item" href="{{ asset('/app') }}" style="color :#000">Dashboard</a>
+                                        <a href="{{route('logout')}}" class="dropdown-item ai-icon" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                           <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                           <span class="ml-2" style="color:#000">Déconnexion </span>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                             @csrf
+                                         </form>
+                                       </a>
+                                        @else
+                                        <a class="dropdown-item" href="{{ asset('/login') }}" style="color :#000">Connexion</a>
+                                        <a class="dropdown-item" href="{{ asset('/register') }}" style="color :#000">Inscription</a>
+                                        @endauth
+                                        </div>
+                                    </li>
                                     <li><a href="#"><i class="fal fa-heart"></i></a></li>
                                     <li><a href="#" class="menu-icon"><img src="{{ asset('front/assets/images/bar-2.png') }}" alt=""></a></li>
                                 </ul>
+                            </div>
                             </div>
                         </div>
                         <!-- Navbar Toggler -->
@@ -229,12 +247,13 @@
         </footer><!--====== End Footer ======-->
         <!--====== back-to-top ======-->
     <a href="#" class="back-to-top" ><i class="fas fa-angle-up"></i></a>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <!--====== Jquery js ======-->
     <script src="{{ asset('front/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
     <script src="{{ asset('front/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
     <!--====== Bootstrap js ======-->
     <script src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('front/assets/js/popper.min.js') }}"></script>
     <!--====== Slick js ======-->
     <script src="{{ asset('front/assets/js/slick.min.js') }}"></script>
     <!--====== Magnific Popup js ======-->
@@ -243,15 +262,49 @@
     <script src="{{ asset('front/assets/js/isotope.pkgd.min.js') }}"></script>
     <!--====== Imagesloaded js ======-->
     <script src="{{ asset('front/assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <!--====== nice-select js ======-->
-    <script src="{{ asset('front/assets/js/jquery.nice-select.min.js') }}"></script>
-    <!--====== select number ======-->
-    <script src="{{ asset('front/assets/js/jquery.nice-number.min.js') }}"></script>
     <!--====== jquery-ui js  ======-->
     <script src="{{ asset('front/assets/js/jquery-ui.min.js') }}"></script>
     <!--====== Syotimer js  ======-->
     <script src="{{ asset('front/assets/js/jquery.syotimer.min.js') }}"></script>
     <!--====== Main js ======-->
     <script src="{{ asset('front/assets/js/main.js') }}"></script>
+    <script src="{{asset('front/assets/uploader/drop_uploader.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+        $('.image').drop_uploader({
+            uploader_text: 'Déposez les fichiers à télécharger ou ',
+            browse_text: 'parcourez',
+            only_one_error_text: 'Only one file allowed',
+            not_allowed_error_text: 'File type is not allowed',
+            big_file_before_error_text: 'Files, bigger than',
+            big_file_after_error_text: 'is not allowed',
+            allowed_before_error_text: 'Only',
+            allowed_after_error_text: 'files allowed',
+            browse_css_class: 'button button-primary',
+            browse_css_selector: 'file_browse',
+            uploader_icon: '',
+            file_icon: '',
+            progress_color: '#4a90e2',
+            time_show_errors: 5,
+            layout: 'thumbnails',
+            method: 'normal',
+            chunk_size: 1000000,
+            concurrent_uploads: 5,
+            show_percentage: true,
+            existing_files: false,
+            existing_files_removable: true,
+            send_existing_files: false,
+            url: 'ajax_upload.php',
+            delete_url: 'ajax_delete.php',
+        });
+    });
+
+        </script>
+    @stack('go-step-two-scripts')
+    @stack('select-wilaya-script')
     </body>
 </html>

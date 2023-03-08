@@ -15,8 +15,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">12</h5>
-												<span class="text-success">Annonces</span>
+												<h5 class="mb-1">{{ $count_announcement }}</h5>
+												<span class="text-success">Annonce(s)</span>
 											</div>
 										</div>
 									</div>
@@ -28,8 +28,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">20</h5>
-												<span class="text-success">Clients</span>
+												<h5 class="mb-1">{{ $count_registration }}</h5>
+												<span class="text-success">Client(s)</span>
 											</div>
 										</div>
 									</div>
@@ -41,8 +41,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">10</h5>
-												<span class="text-success">Commentaires</span>
+												<h5 class="mb-1">{{ $count_comment }}</h5>
+												<span class="text-success">Commentaire(s)</span>
 											</div>
 										</div>
 									</div>
@@ -85,6 +85,7 @@
 													</tr>
 												</thead>
 												<tbody>
+                                                    @foreach($registrations as $registration)
 													<tr>
 														<td>
 															<div class="custom-control custom-checkbox check-lg mr-3">
@@ -92,51 +93,18 @@
 																<label class="custom-control-label" for="customCheckBox2"></label>
 															</div>
 														</td>
-														<td><b>Atik romaissa</b></td>
-														<td>0541259878</td>
-														<td>romaissa@gmail.com</td>
+														<td><b>{{ $registration->first_name }} {{ $registration->first_name }}</b></td>
+														<td>{{ $registration->phone }}</td>
+														<td>{{ $registration->email }}</td>
+                                                        @if($registration->status == 0)
 														<td class="recent-stats d-flex align-items-center"><span class="badge badge-warning">En attente</span></td>
-
+                                                        @elseif($registration->status == 1)
+                                                        <td class="recent-stats d-flex align-items-center"><span class="badge badge-success">Validé</span></td>
+                                                        @else
+                                                        <td class="recent-stats d-flex align-items-center"><span class="badge badge-danger">Annuler</span></td>
+                                                        @endif
 													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td><b>Atik romaissa</b></td>
-														<td>0541259878</td>
-														<td>romaissa@gmail.com</td>
-														<td class="recent-stats d-flex align-items-center"><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td><b>Atik romaissa</b></td>
-														<td>0541259878</td>
-														<td>romaissa@gmail.com</td>
-														<td class="recent-stats d-flex align-items-center"><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td><b>Atik romaissa</b></td>
-														<td>0541259878</td>
-														<td>romaissa@gmail.com</td>
-														<td class="recent-stats d-flex align-items-center"><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
+                                                    @endforeach
 												</tbody>
 											</table>
 										</div>
@@ -167,6 +135,7 @@
 													</tr>
 												</thead>
 												<tbody>
+                                                    @foreach($announcements as $announcement)
 													<tr>
 														<td>
 															<div class="custom-control custom-checkbox check-lg mr-3">
@@ -174,55 +143,17 @@
 																<label class="custom-control-label" for="customCheckBox2"></label>
 															</div>
 														</td>
-														<td>STUDIO TOULOUSE</td>
-                                                        <td>Atik Romaissa</td>
-                                                        <td>Studio</td>
-                                                        <td>location </td>
+														<td>{{ $announcement->designation }}</td>
+                                                        <td>{{ $announcement->user->first_name }} {{ $announcement->user->last_name }}</td>
+                                                        <td>{{ $announcement->category->designation }}</td>
+                                                        @if($announcement->type == 0)
+                                                        <td>Vente </td>
+                                                        @else
+                                                        <td>Location </td>
+                                                        @endif
                                                         <td><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td>STUDIO TOULOUSE</td>
-                                                        <td>Atik Romaissa</td>
-                                                        <td>Studio</td>
-                                                        <td>location </td>
-                                                        <td><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td>STUDIO TOULOUSE</td>
-                                                        <td>Atik Romaissa</td>
-                                                        <td>Studio</td>
-                                                        <td>location </td>
-                                                        <td><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
-													<tr>
-														<td>
-															<div class="custom-control custom-checkbox check-lg mr-3">
-																<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-																<label class="custom-control-label" for="customCheckBox2"></label>
-															</div>
-														</td>
-														<td>STUDIO TOULOUSE</td>
-                                                        <td>Atik Romaissa</td>
-                                                        <td>Studio</td>
-                                                        <td>location </td>
-                                                        <td><span class="badge badge-warning">En attente</span></td>
-
-													</tr>
+                                                    </tr>
+                                                    @endforeach
 												</tbody>
 											</table>
 										</div>
@@ -241,14 +172,14 @@
 													<div class="timeline-badge warning"></div>
 													<a class="timeline-panel text-muted" href="#">
 
-														<h6 class="mb-0"><strong class="text-warning">5</strong> en attente(s)</h6>
+														<h6 class="mb-0"><strong class="text-warning">{{ $announcement_warning }}</strong> en attente(s)</h6>
 													</a>
 												</li>
 												<li>
 													<div class="timeline-badge success">
 													</div>
 													<a class="timeline-panel text-muted" href="#">
-														<h6 class="mb-0"><strong class="text-success">10</strong> validé(s)</h6>
+														<h6 class="mb-0"><strong class="text-success">{{ $announcement_validate }}</strong> validé(s)</h6>
 													</a>
 												</li>
 												<li>
@@ -256,7 +187,7 @@
 													</div>
 													<a class="timeline-panel text-muted" href="#">
 
-														<h6 class="mb-0"><strong class="text-danger">5</strong> annulé(s)</h6>
+														<h6 class="mb-0"><strong class="text-danger">{{ $announcement_cancel }}</strong> annulé(s)</h6>
 													</a>
 												</li>
 

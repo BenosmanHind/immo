@@ -156,13 +156,10 @@ $(function($) {
     });
 
     // jquery nice select js
-    $('select').niceSelect();
+
 
     // nice number
-    $('input[type="number"]').niceNumber({
-      buttonDecrement:'<i class="fal fa-minus"></i>',
-      buttonIncrement:'<i class="fal fa-plus"></i>'
-    });
+
 
     // Product Quantity
     $( "#slider-range" ).slider({
@@ -176,7 +173,7 @@ $(function($) {
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-    
+
     //=====  Slick Slider js
     $('.hero-contnt-slide').slick({
         dots: false,

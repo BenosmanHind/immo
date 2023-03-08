@@ -58,7 +58,13 @@ class LoginController extends Controller
                 return redirect('/admin');
             }
             if(auth::user()->type == 'customer'){
-                return redirect('/app');
+                if(auth::user()->status == 0  || auth::user()->status == 2){
+                 return redirect('/test-login');
+                }
+                else{
+                    return redirect('/app');
+                }
+
             }
         }
         else{
