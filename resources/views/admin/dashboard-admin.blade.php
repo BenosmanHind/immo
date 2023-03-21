@@ -151,7 +151,13 @@
                                                         @else
                                                         <td>Location </td>
                                                         @endif
-                                                        <td><span class="badge badge-warning">En attente</span></td>
+                                                        @if($announcement->status == 0)
+                                                        <td id="td-status-{{$announcement->id}}"><span class="badge badge-warning">En attente</span></td>
+                                                        @elseif($announcement->status == 1)
+                                                        <td  id="td-status-{{$announcement->id}}"><span class="badge badge-success">Validé</span></td>
+                                                        @else
+                                                        <td  id="td-status-{{$announcement->id}}"><span class="badge badge-danger">Annuler</span></td>
+                                                        @endif
                                                     </tr>
                                                     @endforeach
 												</tbody>

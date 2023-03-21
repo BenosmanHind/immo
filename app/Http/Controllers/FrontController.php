@@ -11,6 +11,7 @@ use TheHocineSaad\LaravelAlgereography\Models\Wilaya;
 class FrontController extends Controller
 {
     //
+
     public function detailAnnouncement($slug){
         $announcement = Property::where('slug',$slug)->first();
          if($announcement->status == 1){
@@ -41,9 +42,5 @@ class FrontController extends Controller
             }
       }
 }
-    public function app(){
-        $announcements = Property::where('user_id',Auth::user()->id)->get();
-        $count_announcement = Property::where('user_id',Auth::user()->id)->count();
-        return view('app',compact('announcements','count_announcement'));
-    }
+
 }

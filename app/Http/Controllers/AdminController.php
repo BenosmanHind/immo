@@ -13,6 +13,7 @@ class AdminController extends Controller
     public function index(){
         $registrations = User::where('type','customer')->orderBy('created_at','desc')->limit('5')->get();
         $announcements = Property::orderBy('created_at','desc')->limit('5')->get();
+
         $count_announcement = Property::count();
         $count_registration = User::where('type','customer')->count();
         $count_comment = Comment::count();

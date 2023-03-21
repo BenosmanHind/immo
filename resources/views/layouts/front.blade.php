@@ -31,8 +31,19 @@
 
     </head>
 
-    <style>
+    <style >
+        .bootstrap-select .dropdown-toggle .filter-option {
+  text-align: left;
+  padding-top: 14px!important;
+}
+.btn-light{
+    height: 65px!important;
+}
 
+.company-section::after {
+
+  opacity: 0.9!important;
+}
     </style>
     <body>
         <!--====== Start Preloader ======-->
@@ -101,7 +112,7 @@
                             <!-- nav-menu -->
                             <nav class="main-menu">
                                 <ul>
-                                    <li class="menu-item active"><a href="#">Accueil</a>
+                                    <li class="menu-item active"><a href="{{ asset('/') }}">Accueil</a>
                                     </li>
                                     <li class="menu-item"><a href="#">Services</a></li>
                                     <li class="menu-item"><a href="#">A propos</a></li>
@@ -306,5 +317,6 @@
         </script>
     @stack('go-step-two-scripts')
     @stack('select-wilaya-script')
+    @stack('contact-script')
     </body>
 </html>

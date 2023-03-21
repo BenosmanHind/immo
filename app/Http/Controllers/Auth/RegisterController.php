@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -80,14 +81,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'type' =>'customer',
-            'status' =>0,
-            'password' => Hash::make($data['password']),
-        ]);
+        $user = new User();
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->phone = $data['phone'];
+        $user->email = $data['email'];
+        $user->type = 'customer';
+        $user->status = 0;
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        $favorite = new Favorite();
+        $favorite->user_id = $user->id;
+        $favorite->save();
+        return $user;
     }
 }

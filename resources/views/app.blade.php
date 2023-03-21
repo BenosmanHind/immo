@@ -37,9 +37,14 @@
                             <td style="vertical-align: middle;">{{ $announcement->designation }}</td>
                             <td style="vertical-align: middle;">@if($announcement->status == 0) En attente @elseif($announcement->status == 1) Validé @else Annuler @endif</td>
                             <td style="vertical-align: middle;">
+                                <form action="{{ asset('app/announcement/'.$announcement->id) }}" method="post">
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
                                 <a href="{{ asset('announcement/'.$announcement->slug) }}" class=" btn-xs sharp mr-1 "><i class="fa fa-eye"></i></a>
-                                <a href="#" class=" btn-xs sharp mr-1 "><i class="fa fa-pencil"></i></a>
+                                <a href="{{ asset('app/announcement/'.$announcement->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i class="fa fa-pencil"></i></a>
+
                                 <button onclick="return confirm('Vous voulez vraiment supprimer?')" style="background-color: #ffff;"><i class="fa fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
 
