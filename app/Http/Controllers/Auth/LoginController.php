@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
+use App\Models\Favoriteline;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +36,18 @@ class LoginController extends Controller
      *
      * @return void
      */
+    public function showLoginForm()
+    {
+        if(Auth::user()){
+            $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+        }
+        else{
+            $favorite = session()->get('favorite_id');
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+        }
+        return view('auth.login',compact('count_favorite_lines'));
+    }
 
      public function login(Request $request)
     {

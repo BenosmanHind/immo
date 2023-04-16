@@ -18,7 +18,7 @@
     </div>
 </section><!--====== End breadcrumbs-section ======-->
 <!--====== Start contact-area ======-->
-<section class="contact-area contact-area-v1">
+<section class="contact-area contact-area-v1 mb-4">
     <div class="container">
         <div class="row mt-4 d-flex justify-content-center">
            <div class="col-lg-8">

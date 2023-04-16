@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorite;
+use App\Models\Favoriteline;
 use App\Models\Image;
 use App\Models\Paper;
 use App\Models\Paymentcondition;
@@ -22,11 +24,27 @@ class AnnouncementController extends Controller
     }
     public function create(){
         $categories = Category::all();
-        return view('add-announcement-step-one',compact('categories'));
+        if(Auth::user()){
+            $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+        }
+        else{
+            $favorite = session()->get('favorite_id');
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+        }
+        return view('add-announcement-step-one',compact('categories','count_favorite_lines'));
     }
     public function stepTwo($category , $type){
         $wilayas = Wilaya::all();
-        return view('add-announcement-step-two',compact('category','type','wilayas'));
+        if(Auth::user()){
+            $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+        }
+        else{
+            $favorite = session()->get('favorite_id');
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+        }
+        return view('add-announcement-step-two',compact('category','type','wilayas','count_favorite_lines'));
     }
     public function getDaira($id){
         $dairas = Daira::where('wilaya_id',$id)->get();
@@ -105,7 +123,15 @@ class AnnouncementController extends Controller
          public function edit($id){
             $announcement = Property::find($id);
             $categories = Category::all();
-            return view('edit-announcement-step-one',compact('announcement','categories'));
+            if(Auth::user()){
+                $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+            }
+            else{
+                $favorite = session()->get('favorite_id');
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+            }
+            return view('edit-announcement-step-one',compact('announcement','categories','count_favorite_lines'));
          }
 
 
@@ -159,8 +185,15 @@ class AnnouncementController extends Controller
             $resultats_p = array_diff($array_papers,$array_papers_p);
             $resultats_s = array_diff($array_specifications,$array_specifications_p);
             $resultats_c = array_diff($array_conditions,$array_conditions_p);
-
-            return view('edit-announcement-step-two',compact('category','type','wilayas','announcement','wilaya','daira','dairas','images','resultats_p','resultats_s','resultats_c','papers','specifications','conditions'));
+            if(Auth::user()){
+                $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+            }
+            else{
+                $favorite = session()->get('favorite_id');
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+            }
+            return view('edit-announcement-step-two',compact('category','type','wilayas','announcement','wilaya','daira','dairas','images','resultats_p','resultats_s','resultats_c','papers','specifications','conditions','count_favorite_lines'));
         }
 
         public function update(Request $request , $id){

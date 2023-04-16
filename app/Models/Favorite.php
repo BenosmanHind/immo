@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     use HasFactory;
+    public function favoritelines()
+    {
+        return $this->hasMany(Favoriteline::class);
+    }
 }

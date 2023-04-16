@@ -25,9 +25,11 @@
         <!--====== Default css ======-->
         <link rel="stylesheet" href="{{ asset('front/assets/css/default.css') }}">
         <!--====== Style css ======-->
+        <link rel="stylesheet" href="{{ asset('plugins/star-rating-svg.css') }}" />
         <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
         <link rel="stylesheet" href="{{asset('front/assets/uploader/drop_uploader.css')}}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
 
     </head>
 
@@ -115,8 +117,8 @@
                                     <li class="menu-item active"><a href="{{ asset('/') }}">Accueil</a>
                                     </li>
                                     <li class="menu-item"><a href="#">Services</a></li>
-                                    <li class="menu-item"><a href="#">A propos</a></li>
-                                    <li class="menu-item"><a href="#">Contact</a></li>
+                                    <li class="menu-item"><a href="{{ asset('/about') }}">A propos</a></li>
+                                    <li class="menu-item"><a href="{{ asset('/contact') }}">Contact</a></li>
                                 </ul>
                             </nav>
                             <!-- nav pushed item -->
@@ -149,7 +151,12 @@
                                         @endauth
                                         </div>
                                     </li>
-                                    <li><a href="#"><i class="fal fa-heart"></i></a></li>
+                                    <li>
+                                        <a href="{{ asset('/favorite') }}">
+                                            <i class="fal fa-heart"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger nbr-favorit">{{ $count_favorite_lines }}</span>
+                                        </a>
+                                    </li>
                                     <li><a href="#" class="menu-icon"><img src="{{ asset('front/assets/images/bar-2.png') }}" alt=""></a></li>
                                 </ul>
                             </div>
@@ -167,7 +174,7 @@
                 <div class="sidemenu-nav">
                     <a href="#" class="cross-icon"><i class="far fa-times"></i></a>
                     <ul class="sidebar-menu">
-                        <li class="menu-item"><a href="#">Accueil</a>
+                        <li class="menu-item"><a href="{{ asset('/') }}">Accueil</a>
                         </li>
                         <li class="menu-item"><a href="#">Services</a></li>
                         <li class="menu-item"><a href="#">A propos</a></li>
@@ -280,9 +287,10 @@
     <!--====== Main js ======-->
     <script src="{{ asset('front/assets/js/main.js') }}"></script>
     <script src="{{asset('front/assets/uploader/drop_uploader.js')}}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-
+    <!-- rating -->
+    <script type="text/javascript" src="{{ asset('plugins/jquery.star-rating-svg.js') }}"></script>
     <script>
 
         $(document).ready(function(){
@@ -314,9 +322,31 @@
         });
     });
 
+
+        </script>
+
+        <script>
+
+            $(".my-rating").starRating({
+                starSize: 25,
+                initialRating: 3.5,
+            });
+
+            let rate =$('#rate-result').val();
+
+            $(".rating-result").starRating({
+                starSize: 25,
+                initialRating: rate,
+                readOnly: true
+            });
+
         </script>
     @stack('go-step-two-scripts')
     @stack('select-wilaya-script')
-    @stack('contact-script')
+    @stack('contact-scripts')
+    @stack('modal-delete-script')
+    @stack('comment-scripts')
+    @stack('delete-line')
+    @stack('script-alert')
     </body>
 </html>

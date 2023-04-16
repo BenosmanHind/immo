@@ -7,10 +7,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="breadcrumbs-content text-center">
-                    <h1>Ajouter annonce</h1>
+                    <h1>Modifier annonce</h1>
                     <ul class="link">
                         <li><a href="#">Accueil</a></li>
-                        <li class="active">Ajouter annonce</li>
+                        <li class="active">Modifier annonce</li>
                     </ul>
                 </div>
             </div>

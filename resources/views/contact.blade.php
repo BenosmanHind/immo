@@ -24,7 +24,7 @@
                 <div class="contact-info-list">
                     <div class="list-item mb-30">
                         <i class="fal fa-map-marker-alt"></i>
-                        <h5>Main Address</h5>
+                        <h5>Address</h5>
                         <p>205 Main Street, 5th Floor D - Block, New York</p>
                     </div>
                     <div class="list-item mb-30">
@@ -47,25 +47,30 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form_group">
-                                    <input type="text" class="form_control" placeholder="Nom complet" name="name" required>
+                                    <input type="text" class="form_control" placeholder="Nom complet" id="name" required>
                                     <i class="fal fa-user"></i>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form_group">
-                                    <input type="email" class="form_control" placeholder="Email" name="email" required>
+                                    <input type="email" class="form_control" placeholder="Email" id="email" required>
                                     <i class="fal fa-envelope"></i>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form_group">
-                                    <textarea class="form_control" placeholder="Message" name="message"></textarea>
+                                    <textarea class="form_control" placeholder="Message" id="message" required></textarea>
                                     <i class="fal fa-pencil"></i>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                            <div id="show_contact_msg" >
+
+                            </div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="form_group">
-                                    <button class="main-btn">Envoyer</button>
+                                    <button class="main-btn" type="submit">Envoyer</button>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +82,7 @@
 </section><!--====== End contact-area ======-->
 
 @endsection
-@endsection
+
 @push('contact-scripts')
 <script>
       $.ajaxSetup({
@@ -99,6 +104,7 @@
             email: email,
             message: message
         };
+
         $.ajax(
                 {
                     url: formURL,
@@ -107,6 +113,10 @@
                     success: function (res) {
                         if (res === '1') {
                             $('#show_contact_msg').html('<div class="alert alert-success mt-2" id="form-success" role="alert"> Votre messgae à été bien envoyer !</div>');
+                            $("#show_contact_msg").slideDown(200).delay(3500).slideUp(200);
+                            $("#name").val('');
+                            $("#email").val('');
+                            $("#message").val('');
                         }
                     }
                 });

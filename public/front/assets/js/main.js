@@ -617,7 +617,6 @@ $(function($) {
         $('.filter-btn li').on('click', function (e) {
             $(this).siblings('.active').removeClass('active');
             $(this).addClass('active');
-            e.preventDefault();
         });
         var items = $('.product-items').isotope();
     });

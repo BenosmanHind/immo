@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
+use App\Models\Favoriteline;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -94,5 +95,16 @@ class RegisterController extends Controller
         $favorite->user_id = $user->id;
         $favorite->save();
         return $user;
+    }
+    public function showRegistrationForm(){
+        if(Auth::user()){
+            $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+        }
+        else{
+            $favorite = session()->get('favorite_id');
+            $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+        }
+        return view('auth.register',compact('count_favorite_lines'));
     }
 }

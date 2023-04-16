@@ -15,36 +15,35 @@
                 </div>
             </div>
             <div class="hero-filter mt-3">
-                <form>
+                <form action="/search" method="GET" role="search">
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <select class="form-control selectpicker"  data-live-search="true" >
+                                <select class="form-control selectpicker"  data-live-search="true" name="type" >
                                     <option data-display="Cars Name">Type</option>
-                                    <option value="1">Vente</option>
-                                    <option value="2">Location</option>
+                                    <option value="0">Vente</option>
+                                    <option value="1">Location</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <select  class="form-control selectpicker"  data-live-search="true" >
+                                <select  class="form-control selectpicker"  data-live-search="true" name="category">
                                     <option data-display="Cars Name">Catégorie</option>
-                                    <option value="1">Villa</option>
-                                    <option value="2">Appartement</option>
-                                    <option value="3">Terrain</option>
-                                    <option value="4">Local</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->designation }}</option>
+                                    @endforeach
+
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <select  class="form-control selectpicker"  data-live-search="true" >
+                                <select  class="form-control selectpicker"  data-live-search="true" name="wilaya">
                                     <option data-display="Select Year">Wilaya</option>
-                                    <option value="1">Alger</option>
-                                    <option value="2">Oran</option>
-                                    <option value="3">Tlemcen</option>
-
+                                    @foreach($wilayas as $wilaya)
+                                    <option value="{{ $wilaya->id }}">{{ $wilaya->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

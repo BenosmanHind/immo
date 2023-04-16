@@ -38,34 +38,23 @@
                                 </tr>
                             </thead>
                         <tbody>
-
+                             @foreach($comments as $comment)
                                 <tr >
-                                    <td>1</td>
-                                    <td>Atik romaissa</td>
-                                    <td>STUDIO TOULOUSE</td>
-                                    <td>commentaire</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $comment->user->first_name}} {{ $comment->user->last_name}}</td>
+                                    <td>{{ $comment->property->designation }}</td>
+                                    <td>{{ $comment->comment }}</td>
                                     <td>
-                                        <form action="" method="post">
+                                        <form action="{{ asset('admin/comments/'.$comment->id) }}" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('DELETE')}}
                                          <div class="d-flex">
                                             <button class="  btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
                                         </div>
                                         </form>
                                     </td>
                                  </tr>
-                                 <tr >
-                                    <td>1</td>
-                                    <td>Atik romaissa</td>
-                                    <td>STUDIO TOULOUSE</td>
-                                    <td>commentaire</td>
-                                    <td>
-                                        <form action="" method="post">
-                                         <div class="d-flex">
-                                            <button class="  btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                        </form>
-                                    </td>
-                                 </tr>
-
+                             @endforeach
                         </tbody>
                         </table>
                         </div>

@@ -7,7 +7,13 @@ use App\Http\Controllers\AdminAnnouncementController;
 use App\Http\Controllers\AdminCommentController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ProfilController;
+use App\Models\Favorite;
+use App\Models\Favoriteline;
 use App\Models\Property;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +28,33 @@ use App\Models\Property;
 
 
 Route::get('/about', function () {
-    return view('/about');
+    if(Auth::user()){
+        $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+        $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+    }
+    else{
+        $favorite = session()->get('favorite_id');
+        $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+    }
+    return view('/about',compact('count_favorite_lines'));
 });
+
+
+
 Route::get('/contact', function () {
-    return view('/contact');
+    if(Auth::user()){
+        $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+        $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+    }
+    else{
+        $favorite = session()->get('favorite_id');
+        $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+    }
+    return view('/contact',compact('count_favorite_lines'));
 });
-Route::get('/', function () {
-    $announcements = Property::where('status',1)->limit(8)->orderBy('created_at','desc')->get();
-    $announcements_vente = Property::where('type',0)->where('status',1)->orderBy('created_at','desc')->get();
-    $announcements_location = Property::where('type',1)->where('status',1)->orderBy('created_at','desc')->get();
-    return view('/welcome-2',compact('announcements','announcements_vente','announcements_location'));
-});
+
+Route::get('/', [App\Http\Controllers\AccueilController::class, 'accueil']);
+Route::get('/search', [App\Http\Controllers\AccueilController::class, 'search']);
 Route::get('/alert', function () {
     return view('alert-message');
 });
@@ -48,6 +70,7 @@ Route::resource('/admin',AdminController::class);
 
 
 Route::resource('/app/announcement',AnnouncementController::class);
+Route::resource('/app/profile',ProfilController::class);
 Route::get('/app/announcement-step-two/{category}/{type}', [App\Http\Controllers\AnnouncementController::class, 'stepTwo']);
 Route::get('/app/edit-announcement-step-two/{category}/{type}/{id}', [App\Http\Controllers\AnnouncementController::class, 'editStepTwo']);
 Route::get('/get-dairas/{id}', [App\Http\Controllers\AnnouncementController::class, 'getDaira']);
@@ -58,6 +81,13 @@ Route::get('/edit-status-announcement/{id}', [App\Http\Controllers\AdminAnnounce
 Route::post('/update-status-announcement/{id}', [App\Http\Controllers\AdminAnnouncementController::class, 'update']);
 Route::get('/category/{id}', [App\Http\Controllers\AccueilController::class, 'categoryAnnouncement']);
 Route::get('/app', [App\Http\Controllers\AppController::class, 'app']);
+Route::get('/favorite', [App\Http\Controllers\FavoriteController::class, 'favoriteList']);
+Route::delete('/favorite/{id}', [App\Http\Controllers\FavoriteController::class, 'deleteFavorite']);
+Route::get('show-model-delete/{id}', [App\Http\Controllers\AppController::class, 'modalDelete']);
+Route::post('store-feedback', [App\Http\Controllers\AppController::class, 'storeFeedback']);
+Route::post('contact', [App\Http\Controllers\ContactController::class, 'contact']);
+Route::resource('/comment',CommentController::class);
+Route::resource('/favorit',FavoriteController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
