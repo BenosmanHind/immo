@@ -6,10 +6,11 @@
             <div class="col-lg-12">
                 <div class="filter-nav text-center mb-50">
                     <ul class="filter-btn">
-                        <li class="active"><a href="{{ asset('/app') }}" >Mes annonces</a></li>
-                        <li data-filter=".cat1">Mes messages</li>
-                        <li><a href="{{ asset('/favorite') }}" >Mes favoris</li>
-                        <li><a href="{{ asset('/app/profile') }}"> Mon profil</a></li>
+                        <li class="active"><a href="{{ asset('/app') }}" >Annonces</a></li>
+                        <li><a href="{{ asset('app/messages') }}">Messages</a></li>
+                        <li><a href="{{ asset('/favorite') }}" >Favoris</a></li>
+                        <li ><a href="{{ asset('/app/notifications') }}" >Notifications</a></li>
+                        <li><a href="{{ asset('/app/profile') }}">Profil</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                             <td style="vertical-align: middle;">
                                 <a href="{{ asset('announcement/'.$announcement->slug) }}" class=" btn-xs sharp mr-1 "><i class="fa fa-eye"></i></a>
                                 <a href="{{ asset('app/announcement/'.$announcement->id.'/edit') }}" class=" btn-xs sharp mr-1 "><i class="fa fa-pencil"></i></a>
-                                <button  style="background-color: #ffff;" id="delete" data-id="{{ $announcement->id }}"><i class="fa fa-trash"></i></button>
+                                <button  style="background-color: #ffff;" class="delete" data-id="{{ $announcement->id }}"><i class="fa fa-trash"></i></button>
                             </td>
                             @else
                             <td></td>
@@ -78,7 +79,7 @@
     }
   });
 
-  $("#delete").click(function() {
+  $(".delete").click(function() {
    var id = $(this).data('id');
    $.ajax({
       url: '/show-model-delete/'+id ,

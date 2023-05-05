@@ -37,7 +37,7 @@
                 <div class="container mt-4 ">
                     <div class="alert alert-danger alert-dismissible fade show flash-alert"  role="alert">
                     <button type = "button" class = "btn-close" style="color:#fff ;" data-bs-dismiss = "alert" id = "close"> </button>
-                    <strong>Désolé , il n'y a pas d'annonces disponibles pour le moment correspondant à vos critères de recherche.</strong>
+                    <strong>Désolé , il n'y a pas d'annonces disponibles pour le moment correspondant à vos critères de recherche.Dès qu'une annonce sera ajoutée, vous recevrez un e-mail de notification</strong>
                     </div>
                 </div>
                 @else

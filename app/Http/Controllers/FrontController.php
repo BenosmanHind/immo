@@ -17,6 +17,8 @@ class FrontController extends Controller
 
     public function detailAnnouncement($slug){
         $announcement = Property::where('slug',$slug)->first();
+        $other_announcements = Property::where('wilaya',$announcement->wilaya)->where('slug','!=',$slug)->get();
+
         $comments = Comment::where('property_id',$announcement->id)->get();
         $comment_count = Comment::where('property_id',$announcement->id)->count();
         $rating = Comment::where('property_id',$announcement->id)->avg('raiting');
@@ -36,7 +38,7 @@ class FrontController extends Controller
                 $favorite = session()->get('favorite_id');
                 $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
             }
-            return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating'));
+            return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating','other_announcements'));
         }
          else{
             if(Auth::user()){
@@ -51,7 +53,7 @@ class FrontController extends Controller
                         $favorite = session()->get('favorite_id');
                         $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
                     }
-                    return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating'));
+                    return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating','other_announcements'));
                 }
                 else{
                     return abort(404, 'Not found');
@@ -69,7 +71,7 @@ class FrontController extends Controller
                         $favorite = session()->get('favorite_id');
                         $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
                     }
-                    return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating'));
+                    return view('detail-announcement',compact('announcement','wilaya','daira','nbr_comment','comments','comment_count','count_favorite_lines','rating','other_announcements'));
                 }
                 else{
                     return abort(404, 'Not found');

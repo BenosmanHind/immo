@@ -231,13 +231,6 @@
                                 </div>
                             </div>
                             <div class="shop-content text-center">
-                                <ul class="rating">
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                    <li class="star"><i class="fas fa-star"></i></li>
-                                </ul>
                                 <h3 class="title"><a href="{{ asset('announcement/'.$announcement->slug) }}">{{ $announcement->designation }}</a></h3>
                                 <p class="price">{{ $announcement->price }} Da</p>
                             </div>
@@ -250,20 +243,25 @@
 
 </section><!--====== End Shop Section ======-->
 <!--====== Start Newsletter Section ======-->
+<div class="toast">
+    <div class="toast-header">
+      Toast Header
+    </div>
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
 <section class="newsletter-section bg_cover pt-75 pb-80" style="background-image: url(assets/images/bg/newsletter-bg.jpg);background-color: #696969">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="newsletter-content text-center">
                     <span class="span">abonnez-vous à la newsletter</span>
-
-                    <form>
-                        <div class="form_group">
-                            <input type="email" class="form_control" placeholder="Enter Your Email Address" name="email" required>
-                            <button class="main-btn">Abonnez-vous maintenant</button>
+                       <div class="form_group">
+                            <input type="email" class="form_control" placeholder="Enter Your Email Address" id="email" required>
+                            <button class="main-btn btn-newsletter">Abonnez-vous maintenant</button>
                         </div>
-                    </form>
-                </div>
+                 </div>
             </div>
         </div>
     </div>
@@ -294,13 +292,7 @@
                         </div>
                     </div>
                     <div class="shop-content text-center">
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
+
                         <h3 class="title"><a href="{{ asset('announcement/'.$announcement_vente->slug) }}">{{ $announcement_vente->designation }}</a></h3>
                         <p class="price">{{ $announcement_vente->price }} Da</p>
                     </div>
@@ -337,13 +329,7 @@
                         </div>
                     </div>
                     <div class="shop-content text-center">
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
+
                         <h3 class="title"><a href="{{ asset('announcement/'.$announcement_location->slug) }}">{{ $announcement_location->designation }}</a></h3>
                         <p class="price">{{ $announcement_location->price }} Da</p>
                     </div>
@@ -378,13 +364,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p>J'ai utilisé ce site pour trouver une propriété à louer et j'ai été extrêmement satisfait du service que j'ai reçu. Les annonces étaient détaillées et précises, ce qui m'a permis de trouver rapidement des biens immobiliers correspondant à mes critères. Le processus de location a été fluide et efficace grâce à l'équipe compétente et professionnelle en charge de mon dossier. Je recommande fortement ce site pour toute personne à la recherche d'un bien immobilier de qualité et d'un service client irréprochable.</p>
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
+
                         <i class="far fa-quote-right quote-icon"></i>
                     </div>
                 </div>
@@ -401,13 +381,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p>J'ai récemment acheté ma maison grâce à ce site et je ne pourrais être plus heureux de mon expérience. Les annonces étaient bien présentées avec de superbes photos qui ont donné une idée claire des propriétés avant même d'organiser une visite.Je recommande vivement ce site pour ceux qui cherchent à acheter une propriété en toute confiance et en toute simplicité.</p>
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
+
                         <i class="far fa-quote-right quote-icon"></i>
                     </div>
                 </div>
@@ -424,13 +398,7 @@
                     </div>
                     <div class="testimonial-content">
                         <p>Je cherchais à louer un appartement dans un quartier spécifique et j'ai trouvé exactement ce que je cherchais grâce à ce site. Les annonces étaient nombreuses et variées, avec des détails précis sur chaque propriété, ce qui m'a permis de trouver rapidement des options qui correspondaient à mes critères. Le personnel a été très utile pour répondre à toutes mes questions. Je recommande fortement ce site pour toute personne à la recherche d'un bien immobilier de qualité et d'un excellent service client.</p>
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
+
                         <i class="far fa-quote-right quote-icon"></i>
                     </div>
                 </div>
@@ -438,8 +406,74 @@
         </div>
     </div>
 </section><!--====== End Testimonial Section ======-->
-
-
-
-
 @endsection
+@push('add-newsletter')
+<script>
+$( ".btn-newsletter" ).click(function(e) {
+
+    e.preventDefault();
+    let email = $('#email').val();
+    $.ajax({
+          type:"Post",
+          url: '/newsletter',
+          data:{
+            "_token": "{{ csrf_token() }}",
+            email:email,
+          },
+          success:function(response){
+
+            if(response == true){
+                toastr.success("Vous allez reçevoir toutes nos nouveautés", "Inscription réussite", {
+                      timeOut: 5e3,
+                      closeButton: !0,
+                      debug: !1,
+                      newestOnTop: !0,
+                      progressBar: !0,
+                      positionClass: "toast-top-right",
+                      preventDuplicates: !0,
+                      onclick: null,
+                      showDuration: "300",
+                      hideDuration: "1000",
+                      extendedTimeOut: "1000",
+                      showEasing: "swing",
+                      hideEasing: "linear",
+                      showMethod: "fadeIn",
+                      hideMethod: "fadeOut",
+                      tapToDismiss: !1
+
+              });
+            }
+            else{
+                toastr.error("Ce email existe déja", "Erreur", {
+                      timeOut: 5e3,
+                      closeButton: !0,
+                      debug: !1,
+                      newestOnTop: !0,
+                      progressBar: !0,
+                      positionClass: "toast-top-right",
+                      preventDuplicates: !0,
+                      onclick: null,
+                      showDuration: "300",
+                      hideDuration: "1000",
+                      extendedTimeOut: "1000",
+                      showEasing: "swing",
+                      hideEasing: "linear",
+                      showMethod: "fadeIn",
+                      hideMethod: "fadeOut",
+                      tapToDismiss: !1
+                });
+            }
+          },
+
+          });
+});
+$( ".btn-close" ).click(function(e) {
+    $("#liveToast").hide();
+
+});
+$( ".close2" ).click(function(e) {
+    $("#liveToast2").hide();
+
+});
+</script>
+@endpush

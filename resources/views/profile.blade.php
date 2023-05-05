@@ -8,10 +8,11 @@
             <div class="col-lg-12">
                 <div class="filter-nav text-center mb-50">
                     <ul class="filter-btn">
-                        <li  class="active"><a href="{{ asset('/app') }}" >Mes annonces</a></li>
-                        <li data-filter=".cat1">Mes messages</li>
-                        <li data-filter=".cat2">Mes favoris</li>
-                        <li data-filter=".cat2">Mon profil</li>
+                        <li ><a href="{{ asset('/app') }}" >Annonces</a></li>
+                        <li><a href="{{ asset('app/messages') }}">Messages</a></li>
+                        <li><a href="{{ asset('/favorite') }}" >Favoris</a></li>
+                        <li ><a href="{{ asset('/app/notifications') }}" >Notifications</a></li>
+                        <li class="active"><a href="{{ asset('/app/profile') }}">Profil</a></li>
                     </ul>
                 </div>
             </div>

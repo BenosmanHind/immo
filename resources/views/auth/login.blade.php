@@ -55,7 +55,13 @@
                                     @enderror
                                 </div>
                             </div>
-
+                            @if($error)
+                            <div class="col-lg-9">
+                                <div class="alert alert-danger mt-3" role="alert">
+                                    <span style="font-size: 15px;">  {{$error}}  </span>
+                                </div>
+                            </div>
+                            @endif
                             <div class="col-lg-6 mt-2 text-center">
                                 <div class="form_group">
                                     <button type ="submit" class="main-btn">Se connecter</button>

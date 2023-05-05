@@ -46,7 +46,8 @@ class LoginController extends Controller
             $favorite = session()->get('favorite_id');
             $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
         }
-        return view('auth.login',compact('count_favorite_lines'));
+        $error = null;
+        return view('auth.login',compact('count_favorite_lines','error'));
     }
 
      public function login(Request $request)
@@ -82,8 +83,16 @@ class LoginController extends Controller
             }
         }
         else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+            $error = 'Coordonnées incorrectes. Veuillez réessayer.';
+            if(Auth::user()){
+                $favorite = Favorite::where('user_id',Auth::user()->id)->first();
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite->id)->count();
+            }
+            else{
+                $favorite = session()->get('favorite_id');
+                $count_favorite_lines = Favoriteline::where('favorite_id',$favorite)->count();
+            }
+            return view('auth.login',compact('error','count_favorite_lines'));
         }
 
     }

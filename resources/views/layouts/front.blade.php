@@ -116,7 +116,7 @@
                                 <ul>
                                     <li class="menu-item active"><a href="{{ asset('/') }}">Accueil</a>
                                     </li>
-                                    <li class="menu-item"><a href="#">Services</a></li>
+
                                     <li class="menu-item"><a href="{{ asset('/about') }}">A propos</a></li>
                                     <li class="menu-item"><a href="{{ asset('/contact') }}">Contact</a></li>
                                 </ul>
@@ -176,7 +176,7 @@
                     <ul class="sidebar-menu">
                         <li class="menu-item"><a href="{{ asset('/') }}">Accueil</a>
                         </li>
-                        <li class="menu-item"><a href="#">Services</a></li>
+
                         <li class="menu-item"><a href="#">A propos</a></li>
                         <li class="menu-item"><a href="#">Contact</a></li>
                     </ul>
@@ -223,7 +223,7 @@
                                 <h4 class="widget-title">A propos</h4>
                                 <ul class="link">
                                     <li><a href="shop-grid.html">Accueil</a></li>
-                                    <li><a href="shop-grid.html">Services</a></li>
+
                                     <li><a href="shop-grid.html">a propos</a></li>
                                     <li><a href="shop-grid.html">contact</a></li>
                                 </ul>
@@ -331,12 +331,41 @@
                 starSize: 25,
                 initialRating: 3.5,
             });
-
+            let rate_class = $('.rate-result').val();
             let rate =$('#rate-result').val();
+            let rate_1 =$('#rate-result-1').val();
+            let rate_2 =$('#rate-result-2').val();
+            let rate_3 =$('#rate-result-3').val();
+            let rate_4 =$('#rate-result-4').val();
 
             $(".rating-result").starRating({
                 starSize: 25,
                 initialRating: rate,
+                readOnly: true
+            });
+            $(".rating-result-1").starRating({
+                starSize: 25,
+                initialRating: rate_1,
+                readOnly: true
+            });
+            $(".rating-result-class").starRating({
+                starSize: 25,
+                initialRating: rate_class,
+                readOnly: true
+            });
+            $(".rating-result-2").starRating({
+                starSize: 25,
+                initialRating: rate_2,
+                readOnly: true
+            });
+            $(".rating-result-3").starRating({
+                starSize: 25,
+                initialRating: rate_3,
+                readOnly: true
+            });
+            $(".rating-result-4").starRating({
+                starSize: 25,
+                initialRating: rate_4,
                 readOnly: true
             });
 
@@ -348,5 +377,8 @@
     @stack('comment-scripts')
     @stack('delete-line')
     @stack('script-alert')
+    @stack('add-newsletter')
+    @stack('message-scripts')
+    @stack('modal-message-script')
     </body>
 </html>

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Favorite;
 use App\Models\Favoriteline;
 use App\Models\Property;
+use App\Models\Search;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use TheHocineSaad\LaravelAlgereography\Models\Wilaya;
@@ -50,6 +51,15 @@ class AccueilController extends Controller
         $category = $request->category;
         $wilaya = $request->wilaya;
         $announcements = Property::where('type', 'like', "%{$type}%")->where('category_id', 'like', "%{$category}%")->where('wilaya', $wilaya)->orderBy('created_at','desc')->get();
+        if(Auth::user()){
+            $search = new Search();
+            $search->type = $type;
+            $search->category = $category;
+            $search->wilaya = $wilaya;
+            $search->user_id = Auth::user()->id;
+            $search->save();
+        }
+
         $categories = Category::all();
         $count_announcement = $announcements->count();
         if(Auth::user()){

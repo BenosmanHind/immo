@@ -51,6 +51,8 @@
                                     <td id="td-status-{{$announcement->id}}"><span class="badge badge-warning">En attente</span></td>
                                     @elseif($announcement->status == 1)
                                     <td  id="td-status-{{$announcement->id}}"><span class="badge badge-success">Validé</span></td>
+                                    @elseif($announcement->status == 3)
+                                    <td  id="td-status-{{$announcement->id}}"><span class="badge badge-info">Supprimé</span></td>
                                     @else
                                     <td  id="td-status-{{$announcement->id}}"><span class="badge badge-danger">Annuler</span></td>
                                     @endif
@@ -58,7 +60,9 @@
                                         <form action="" method="post">
                                          <div class="d-flex">
                                             <a href="{{ asset('announcement/'.$announcement->slug) }}" class="btn btn-success shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
+                                            @if($announcement->status != 3)
                                             <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1 edit-status"data-id="{{ $announcement->id }}"><i class="fa fa-pencil"></i></a>
+                                            @endif
 
                                         </div>
                                         </form>

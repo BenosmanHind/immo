@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Validation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminCustomerController extends Controller
 {
@@ -26,6 +28,9 @@ class AdminCustomerController extends Controller
         $customer = User::find($id);
         $customer->status = $request->status;
         $customer->save();
+        if($request->status == 1 || $request->status == 2 ){
+            Mail::to($customer->email)->send(new Validation($request));
+        }
         return $customer;
     }
 }

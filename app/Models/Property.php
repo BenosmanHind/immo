@@ -33,4 +33,8 @@ class Property extends Model
         return $this->belongsTo(Category::class);
 
     }
+    public function avgRaiting(){
+        $rating = Comment::where('property_id',$this->id)->avg('raiting');
+        return $rating;
+    }
 }

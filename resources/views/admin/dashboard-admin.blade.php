@@ -28,8 +28,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">{{ $count_registration }}</h5>
-												<span class="text-success">Client(s)</span>
+												<h5 class="mb-1">{{ $feedback_option1 }}</h5>
+												<span class="text-success">Propriété(s) vendu sur immo+</span>
 											</div>
 										</div>
 									</div>
@@ -41,8 +41,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">{{ $count_comment }}</h5>
-												<span class="text-success">Commentaire(s)</span>
+												<h5 class="mb-1">{{ $feedback_option2 }}</h5>
+												<span class="text-success">Propriété(s) vendu ailleurs</span>
 											</div>
 										</div>
 									</div>
@@ -54,8 +54,8 @@
 									<div class="card-body  pt-4">
 										<div class="row">
 											<div class="col">
-												<h5 class="mb-1">5</h5>
-												<span class="text-success">Clients</span>
+												<h5 class="mb-1">{{ $feedback_option3 }}</h5>
+												<span class="text-success">Client(s) désisté</span>
 											</div>
 										</div>
 									</div>
@@ -155,6 +155,8 @@
                                                         <td id="td-status-{{$announcement->id}}"><span class="badge badge-warning">En attente</span></td>
                                                         @elseif($announcement->status == 1)
                                                         <td  id="td-status-{{$announcement->id}}"><span class="badge badge-success">Validé</span></td>
+                                                        @elseif($announcement->status == 3)
+                                                        <td  id="td-status-{{$announcement->id}}"><span class="badge badge-info">Supprimé</span></td>
                                                         @else
                                                         <td  id="td-status-{{$announcement->id}}"><span class="badge badge-danger">Annuler</span></td>
                                                         @endif
@@ -169,7 +171,7 @@
 							<div class="col-xl-3 col-xxl-4 col-lg-12 col-md-12">
 								<div class="card">
 									<div class="card-header border-0 pb-0">
-										<h4 class="card-title">Info inscriptions</h4>
+										<h4 class="card-title">Info annonces</h4>
 									</div>
 									<div class="card-body">
 										<div id="DZ_W_TimeLine1" class="widget-timeline dz-scroll style-1" style="height:250px;">
@@ -196,6 +198,14 @@
 														<h6 class="mb-0"><strong class="text-danger">{{ $announcement_cancel }}</strong> annulé(s)</h6>
 													</a>
 												</li>
+                                                <li>
+													<div class="timeline-badge danger">
+													</div>
+													<a class="timeline-panel text-muted" href="#">
+
+														<h6 class="mb-0"><strong class="text-danger">{{ $announcement_delete }}</strong> supprimé(s)</h6>
+													</a>
+												</li>
 
 											</ul>
 										</div>
@@ -205,50 +215,26 @@
                             <div class="col-xl-3 col-xxl-4 col-lg-12 col-md-12">
                                 <div class="card">
                                     <div class="card-header pb-0 border-0">
-                                        <h4 class="card-title text-white">TOP VENDEURS</h4>
+                                        <h4 class="card-title text-white">TOP CLIENTS</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="widget-media">
                                             <ul class="timeline">
+                                                @foreach($top_customers as $top_customer)
+                                                    <li>
+                                                        <div class="timeline-panel">
+                                                            <div class="media mr-2">
+                                                                <img alt="image" width="50" src="{{asset('dashboard/images/avatar/1.jpg')}}">
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h5 class="mb-1 text-white"> {{ $top_customer->user->first_name }} {{ $top_customer->user->last_name }}</h5>
+                                                                <small class="d-block">{{ $top_customer->count }} annonce(s) </small>
+                                                            </div>
 
-                                                <li>
-                                                    <div class="timeline-panel">
-                                                        <div class="media mr-2">
-                                                            <img alt="image" width="50" src="{{asset('dashboard/images/avatar/1.jpg')}}">
                                                         </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-1 text-white"> Atik romaissa</h5>
-                                                            <small class="d-block">10 annonce(s) </small>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="timeline-panel">
-                                                        <div class="media mr-2">
-                                                            <img alt="image" width="50" src="{{asset('dashboard/images/avatar/1.jpg')}}">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-1 text-white"> Atik romaissa</h5>
-                                                            <small class="d-block">8 annonce(s) </small>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="timeline-panel">
-                                                        <div class="media mr-2">
-                                                            <img alt="image" width="50" src="{{asset('dashboard/images/avatar/1.jpg')}}">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5 class="mb-1 text-white"> Atik romaissa</h5>
-                                                            <small class="d-block">5 annonce(s) </small>
-                                                        </div>
-
-                                                    </div>
-                                                </li>
-
-                                             </ul>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
                                     </div>
 

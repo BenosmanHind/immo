@@ -13,19 +13,19 @@
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="radios1" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">
-                    Avez-vous vendu votre article sur Immo+ ?
+                    Avez-vous vendu votre propriété sur Immo+ ?
                 </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="radios2" value="option2">
                 <label class="form-check-label" for="exampleRadios2">
-                    Avez-vous vendu votre article ailleurs ?
+                    Avez-vous vendu votre propriété ailleurs ?
                 </label>
               </div>
               <div class="form-check disabled">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="radios3" value="option3" >
                 <label class="form-check-label" for="exampleRadios3">
-                    Avez-vous désisté de vendre l'article ?
+                    Avez-vous désisté de vendre la propriété ?
                 </label>
               </div>
               <input type="hidden" value="{{ $announcement->id }}"id="announcement">

@@ -58,6 +58,16 @@
                             <input type="hidden" value="{{ $announcement->id }}" id="id">
                         </div>
                     </div>
+                    @if(Auth::user())
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 mt-3" >
+                                <button type="button" id="add-message" class="main-btn">Envoyer un message</button>
+                                <input type="hidden" name="recipient" value="{{ $announcement->user_id }}" id="recipient">
+                                <input type="hidden" name="name_1" value="{{ $announcement->id }}" id="announcement">
+                        </div>
+
+                    </div>
+                    @endif
                     <ul class="social-link">
                         <li><span>Partager :</span></li>
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -86,7 +96,7 @@
                               <a class="nav-link" data-toggle="tab" href="#additional">Informations de l'annonce</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#reviews">Commentaire(s) ({{ $comment_count }})</a>
+                              <a class="nav-link comment" data-toggle="tab" href="#reviews">Commentaire(s) ({{ $comment_count }})</a>
                             </li>
                         </ul>
                     </div>
@@ -133,7 +143,7 @@
 
                         <div id="reviews" class="tab-pane fade">
                             <div class="shop_review_area">
-                                <h4 class="title">{{ $comment_count }} commentaire(s) pour {{ $announcement->designation }}</h4>
+                                <h4 class="title title-comment">{{ $comment_count }} commentaire(s) pour {{ $announcement->designation }}</h4>
                                 <div id="add-comment">
                                     @foreach($comments as $comment)
                                     <div class="review_user" >
@@ -192,6 +202,7 @@
     </div>
 </section><!--====== End contact_map section ======-->
  <!--====== Start Shop Section ======-->
+ @if($other_announcements)
 <section class="shop-grid-v2 pt-70 pb-55">
     <div class="container">
         <div class="row justify-content-center">
@@ -203,104 +214,78 @@
             </div>
         </div>
         <div class="row best-slide">
+            @foreach($other_announcements as $other_announcement)
             <div class="col-lg-3">
                 <div class="shop-item mb-20">
                     <div class="shop-img">
-                        <span class="span new">new</span>
-                        <img src="{{ asset('/storage/images/properties/'.$announcement->images[0]->link) }}" alt="">
+                        <span class="span new">@if($other_announcement->type == 0) Vente @else Location @endif</span>
+                        <img src="{{ asset('/storage/images/properties/'.$other_announcement->images[0]->link) }}" alt="">
                     </div>
                     <div class="shop-content text-center">
                         <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
+                            <div class="rating-result-1"></div>
                         </ul>
-                        <h3 class="title"><a href="shop-details.html">KLEINGOEFT (67440)</a></h3>
-                        <p class="price">{{ number_format(350000.0) }} Da</p>
+                        <input type="hidden" id="rate-result-1" value="{{ $other_announcement->avgRaiting()}}">
+                        <h3 class="title"><a href="{{ url('announcement/'.$other_announcement->slug) }}">{{ $other_announcement->designation }}</a></h3>
+                        <p class="price">{{ number_format($other_announcement->price) }} Da</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="shop-item mb-20">
                     <div class="shop-img">
-                        <span class="span new">new</span>
-                        <img src="{{ asset('/storage/images/properties/'.$announcement->images[0]->link) }}" alt="">
+                        <span class="span new">@if($other_announcement->type == 0) Vente @else Location @endif</span>
+                        <img src="{{ asset('/storage/images/properties/'.$other_announcement->images[0]->link) }}" alt="">
                     </div>
                     <div class="shop-content text-center">
                         <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
+                            <div class="rating-result-2"></div>
                         </ul>
-                        <h3 class="title"><a href="shop-details.html">KLEINGOEFT (67440)</a></h3>
-                        <p class="price">{{ number_format(350000.0) }} Da</p>
+                        <input type="hidden" id="rate-result-2" value="{{ $other_announcement->avgRaiting()}}">
+                        <h3 class="title"><a href="{{ url('announcement/'.$other_announcement->slug) }}">{{ $other_announcement->designation }}</a></h3>
+                        <p class="price">{{ number_format($other_announcement->price) }} Da</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="shop-item mb-20">
                     <div class="shop-img">
-                        <span class="span new">new</span>
-                        <img src="{{ asset('/storage/images/properties/'.$announcement->images[0]->link) }}" alt="">
+                        <span class="span new">@if($other_announcement->type == 0) Vente @else Location @endif</span>
+                        <img src="{{ asset('/storage/images/properties/'.$other_announcement->images[0]->link) }}" alt="">
                     </div>
                     <div class="shop-content text-center">
                         <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
+                            <div class="rating-result-3"></div>
                         </ul>
-                        <h3 class="title"><a href="shop-details.html">KLEINGOEFT (67440)</a></h3>
-                        <p class="price">{{ number_format(350000.0) }} Da</p>
+                        <input type="hidden" id="rate-result-3" value="{{ $other_announcement->avgRaiting()}}">
+                        <h3 class="title"><a href="{{ url('announcement/'.$other_announcement->slug) }}">{{ $other_announcement->designation }}</a></h3>
+                        <p class="price">{{ number_format($other_announcement->price) }} Da</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="shop-item mb-20">
                     <div class="shop-img">
-                        <span class="span new">new</span>
-                        <img src="{{ asset('/storage/images/properties/'.$announcement->images[0]->link) }}" alt="">
+                        <span class="span new">@if($other_announcement->type == 0) Vente @else Location @endif</span>
+                        <img src="{{ asset('/storage/images/properties/'.$other_announcement->images[0]->link) }}" alt="">
                     </div>
                     <div class="shop-content text-center">
                         <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
+                            <div class="rating-result-4"></div>
                         </ul>
-                        <h3 class="title"><a href="shop-details.html">KLEINGOEFT (67440)</a></h3>
-                        <p class="price">{{ number_format(350000.0) }} Da</p>
+                        <input type="hidden" id="rate-result-4" value="{{ $other_announcement->avgRaiting()}}">
+                        <h3 class="title"><a href="{{ url('announcement/'.$other_announcement->slug) }}">{{ $other_announcement->designation }}</a></h3>
+                        <p class="price">{{ number_format($other_announcement->price) }} Da</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="shop-item mb-20">
-                    <div class="shop-img">
-                        <span class="span new">new</span>
-                        <img src="{{ asset('/storage/images/properties/'.$announcement->images[0]->link) }}" alt="">
-                    </div>
-                    <div class="shop-content text-center">
-                        <ul class="rating">
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                            <li class="star"><i class="fas fa-star"></i></li>
-                        </ul>
-                        <h3 class="title"><a href="shop-details.html">KLEINGOEFT (67440)</a></h3>
-                        <p class="price">{{ number_format(350000.0) }} Da</p>
-                    </div>
-                </div>
             </div>
+
+            @endforeach
         </div>
     </div>
 </section><!--====== End Shop Section ======-->
+@endif
 <!--====== Start sponsor-area section ======-->
 <section class="sponsor-area red-bg pt-60 pb-60">
     <div class="container">
@@ -329,7 +314,8 @@
         </div>
     </div>
 </section><!--====== End sponsor-area section ======-->
-
+<div id="show-modal-message">
+</div>
 @endsection
 @push('comment-scripts')
 <script>
@@ -361,9 +347,10 @@
                     success: function (res) {
                      var path ='{{ asset("front/assets/images/shop/person-1.jpg") }}';
                         $('#add-comment').append('<div class="review_user" >'+' <img src="'+path+'" alt="">'+' <span><span>'+res.name+'</span> – '+res.date+ ' | (<b>'+res.rating+'/5</b>)'+'</span>'+'<p>'+res.comment+'</p>'+'</div>');
-                        $('#show_comment_msg').html('<div class="alert alert-success mt-2 flash-alert" id="form-success" role="alert"> Merci pour votre commentaire !</div>');
-                        $("#show_comment_msg").slideDown(200).delay(3500).slideUp(200);
+                        toastr.success('Message envoyé avec success');
                         $(".comment-section").hide();
+                        $("h4.title-comment").text(''+res.comment_count+' commentaire(s) pour '+res.designation);
+                        $(".comment").text('Commentaire(s) '+res.comment_count );
 
                     }
                 });
@@ -407,4 +394,66 @@
   });
 
 </script>
+@endpush
+@push('modal-message-script')
+<script>
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  $("#add-message").click(function() {
+   var announcement = $('#announcement').val();
+   var recipient = $('#recipient').val();
+   var AuthUser = "{{{ (Auth::user()) ? Auth::user() : null }}}";
+   if(AuthUser == ''){
+    alert('Créez un compte ou connectez-vous à Immo+ pour faire cette action.')
+   }
+   $.ajax({
+      url: '/show-model-message/'+announcement+'/'+recipient ,
+      type: "GET",
+      success: function (res) {
+        $('#show-modal-message').html(res);
+        $("#modal-message").modal('show');
+      }
+    });
+
+  });
+  </script>
+
+<script>
+    $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+    $("#show-modal-message").on('click','#store-message',function(e){
+
+          e.preventDefault();
+          let announcement = $('#announcement').val();
+          let recipient = $('#recipient').val();
+          let sender = $('#sender').val();
+          let message = $('#message').val();
+          $.ajax({
+            type:"Post",
+            url: '/messages',
+            data:{
+              "_token": "{{ csrf_token() }}",
+              announcement:announcement,
+              recipient:recipient,
+              sender:sender,
+              message:message
+            },
+            success:function(response){
+              $('#modal-message').modal('hide');
+              toastr.success('Message envoyé avec success');
+
+            },
+
+            });
+
+     });
+  </script>
 @endpush

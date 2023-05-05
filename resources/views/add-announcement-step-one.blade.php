@@ -35,7 +35,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
 
-                                <select class="form-control selectpicker" data-live-search="true" id="category">
+                                <select class="form-control selectpicker" data-live-search="true" id="category" required>
                                     <option value=""  selected>Catégorie: </option>
                                     @foreach($categories as $category)
                                     <option value="{{ $category->id }}" >{{ $category->designation }}</option>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <select class="form-control selectpicker"  data-live-search="true" id="type">
+                                <select class="form-control selectpicker"  data-live-search="true" id="type" required>
                                     <option value=""  selected>Annonce pour ? : </option>
                                     <option value="0" >Vente </option>
                                     <option value="1" >Location</option>
