@@ -86,16 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="top-right">
-                                <form>
-                                    <div class="form_group">
-                                        <input type="search" placeholder="Rechercher" name="search">
-                                        <i class="far fa-search"></i>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
