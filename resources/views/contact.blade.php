@@ -24,8 +24,8 @@
                 <div class="contact-info-list">
                     <div class="list-item mb-30">
                         <i class="fal fa-map-marker-alt"></i>
-                        <h5>Address</h5>
-                        <p>205 Main Street, 5th Floor D - Block, New York</p>
+                        <h5>Adresse</h5>
+                        <p>208 Cité des jasmin kiffane. Tlemcen, Algérie</p>
                     </div>
                     <div class="list-item mb-30">
                         <i class="fal fa-envelope-open-text"></i>

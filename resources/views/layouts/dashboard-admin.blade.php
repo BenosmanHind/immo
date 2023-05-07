@@ -586,14 +586,14 @@
 
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="{{ asset('dashboard/images/profile/pic1.jpg') }}" width="20" alt=""/>
+                                    <img src="{{ asset('dashboard/images/profile/user.png') }}" width="20" alt=""/>
 									<div class="header-info">
 										<span>Bonjour, <strong>Admin</strong></span>
 										<small>Admin profil</small>
 									</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="./app-profile.html" class="dropdown-item ai-icon">
+                                    <a href="{{ asset('admin/profil') }}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                         <span class="ml-2">Profile </span>
                                     </a>
@@ -692,7 +692,7 @@
 						</a>
                     </li>
                     <li class="nav-label">Paramètres</li>
-                    <li><a href="#" class="ai-icon" aria-expanded="false">
+                    <li><a href="{{ asset('admin/profil') }}" class="ai-icon" aria-expanded="false">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <rect x="0" y="0" width="24" height="24"/>

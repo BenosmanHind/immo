@@ -226,7 +226,7 @@
                                 <ul class="contact-info">
                                     <li>
                                         <i class="fal fa-map-marker-alt"></i>
-                                        <p>250 Main Street. 2nd Floor D - Block, New York</p>
+                                        <p>208 Cité des jasmin kiffane. Tlemcen, Algérie</p>
                                     </li>
                                     <li>
                                         <i class="fal fa-envelope"></i>

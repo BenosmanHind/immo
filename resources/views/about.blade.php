@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
  <!--====== Start breadcrumbs-section ======-->
- <section class="breadcrumbs-section bg_cover" style="background-image: url(assets/images/bg/breadcrumbs-bg.jpg);">
+ <section class="breadcrumbs-section bg_cover" style="background-image: url(assets/images/bg/breadcrumbs-bg.jpg); background-color: #696969">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">

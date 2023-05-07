@@ -1,6 +1,7 @@
 <div class="modal fade" id="basicModal2">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+
             <div class="modal-header">
                 <h5 class="modal-title">Modifier statut</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
@@ -19,7 +20,11 @@
                     </div>
                     <input type="hidden" value="{{ $announcement->id }}" id="announcement">
                 </form>
+                <div class="ml-3" id="loading-indicator" style="display: none;">
+                    En cours...
+                </div>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger light" data-dismiss="modal">Fermer</button>
                 <button type="button" id="save-status" class="btn btn-primary">Enregistrer</button>

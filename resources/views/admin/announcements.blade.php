@@ -81,6 +81,7 @@
 <div id="show-modal-edit-status">
 
 </div>
+<div id="div1"></div>
 @endsection
 @push('modal-edit-status-announcement-scripts')
 <script>
@@ -114,7 +115,7 @@ $(".edit-status").click(function() {
     });
 
     $("#show-modal-edit-status").on('click','#save-status',function(e){
-
+        $('#loading-indicator').show();
           e.preventDefault();
           let status = $('#status').val();
           let id =  $('#announcement').val();
@@ -129,6 +130,7 @@ $(".edit-status").click(function() {
              },
 
             success:function(response){
+            $('#loading-indicator').hide();
              $('#basicModal2').modal('hide');
              toastr.success("Statut modifié avec succès", "Succès", {
                       timeOut: 5e3,

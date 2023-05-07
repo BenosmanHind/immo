@@ -147,7 +147,7 @@
                                 <div id="add-comment">
                                     @foreach($comments as $comment)
                                     <div class="review_user" >
-                                        <img src="{{ asset('front/assets/images/shop/person-1.jpg') }}" alt="">
+                                        <img src="{{ asset('front/assets/images/shop/user.png') }}" alt="">
                                         <span><span>{{ $comment->user->first_name }} {{ $comment->user->last_name }}</span> – {{ $comment->created_at->format('Y-m-d H:m') }} | (<b>{{ $comment->raiting }}/5</b>)</span>
                                         <p>{{ $comment->comment }}.</p>
                                     </div>
@@ -345,7 +345,7 @@
                     type: "POST",
                     data: data,
                     success: function (res) {
-                     var path ='{{ asset("front/assets/images/shop/person-1.jpg") }}';
+                     var path ='{{ asset("front/assets/images/shop/user.png") }}';
                         $('#add-comment').append('<div class="review_user" >'+' <img src="'+path+'" alt="">'+' <span><span>'+res.name+'</span> – '+res.date+ ' | (<b>'+res.rating+'/5</b>)'+'</span>'+'<p>'+res.comment+'</p>'+'</div>');
                         toastr.success('Message envoyé avec success');
                         $(".comment-section").hide();
