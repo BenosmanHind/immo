@@ -64,7 +64,7 @@ class AnnouncementController extends Controller
         $announcement->piece = $request->piece;
         $announcement->etage = $request->etage;
         $announcement->quartie = $request->quartier;
-        $announcement->lien_map = $request->lien_map;
+        $announcement->lien_map = $request->map;
         $announcement->wilaya = $request->wilaya;
         $announcement->daira = $request->daira;
         $announcement->slug = str::slug($request->designation);
