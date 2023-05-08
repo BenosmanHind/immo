@@ -244,7 +244,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Lien map *" name="map " >
+                                            <input type="text" class="form-control" placeholder="Lien map *" name="map" >
 
                                         </div>
                                     </div>
